@@ -1,0 +1,1 @@
+DELETE FROM STV202310168__STAGING.currencies WHERE date_update::date = :business_date;
