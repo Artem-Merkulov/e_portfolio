@@ -14,3 +14,7 @@
 |[A/B-тестирование. Принятие решений в бизнесе.](https://github.com/Artem-Merkulov/e_portfolio/blob/main/DA/AB-testing_Decision_making_in_business.ipynb)|Проверка статистических гипотез для отдела маркетинга крупного интернет-магазина с целью увеличения выручки. Приоритизация гипотез, запуск A/B-теста и анализ результатов.|`python`, `pandas`, `numpy`, `scipy`|
 |[A/B-тестирование. Анализ действий пользователей.](https://github.com/Artem-Merkulov/e_portfolio/blob/main/DA/AB_testing_analyzing_user_actions.ipynb)|Оценка проведения корректности A/B-теста и анализ его результатов.|`python`, `pandas`, `numpy`, `scipy`, `math`, `seaborn`, `staticmodels`|
 |[SQL - Database Analysis](https://github.com/Artem-Merkulov/e_portfolio/blob/main/DA/SQL%20-%20Database%20Analysis.ipynb)| Исследовательский анализ базы данных компании с целью выявления интересных закономерностей. | `python`, `SQL`, `SQLAlchemy`, `psycopg2`|
+
+
+
+В результате выполнения проектов, представленных в данном портфолио, я получил позитивные результаты, как для бизнеса так и для моего профессионального роста. Проведённая аналитика позволила выявить значимые закономерности и тренды, которые могут быть полезны для принятия бизнес-решений. 
