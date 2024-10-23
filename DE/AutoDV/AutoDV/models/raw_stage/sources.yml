@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: automatedv
+    database: postgres
+    schema: auto_dv
+    tables:
+      - name: user
+      - name: dialog
+      - name: group
+      - name: group_log
