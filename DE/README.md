@@ -1,6 +1,6 @@
 # Portfolio
 #### Здесь собраны некоторые реализованные проекты 
-Боле подробное описание проектов в файлах README.md в директориях с проектами.
+Более подробное описание проектов в файлах README.md в директориях с проектами.
  |Наименование проекта |Описание проекта       |  Инструменты   |
 |:-------------------- |:----------------------|:--------------|
 |[Проектирование ETL-пайплайна для финтех-стартапа](https://github.com/Artem-Merkulov/e_portfolio/tree/main/DE/Проектирование%20ETL-пайплайна%20для%20финтех-стартапа)| Спроектирован ETL-пайплайн для анализа и визуализации бизнес-метрик на основе информации о курсах валют и проведённых транзакциях. | `SparkStructuredStreaming`, `AirFlow`, `Metabase`, `Docker`,   `Kafka`, `SQL`, `PostgreSQL`, `python`, `Vertica`  | - Потоковая обработка данных;   <br>- Создание AirFlow DAG's;   <br>- Построение пайплайна;   <br>- Создание dashboard.     | Stream Processing; Apache Spark Structured Streaming; Apache Kafka; Vertica; PostgreSQL; Metabase; | 
@@ -11,3 +11,4 @@
 |[Реализация витрины для расчётов выплат курьерам](https://github.com/Artem-Merkulov/e_portfolio/tree/main/DE/Реализация%20витрины%20для%20расчётов%20выплат%20курьерам)| Рассчитаны суммы выплат курьерам: реализован DWH и ETL-пайплайн для данных.  | `python`, `REST-API`, `PostgreSQL`, `MongoDB`, `Airflow` |
 |[Обновление пайплайна обработки данных](https://github.com/Artem-Merkulov/e_portfolio/tree/main/DE/Обновление%20пайплайна%20обработки%20данных)| Обновлён созданный пайплайн обработки данных для интернет-магазина: добавлены в витрину данные  по отмене заказов и возврату средств, а также рассчитаны метрики по «возвращаемости клиентов». |`python`, `SQL`, `PostgreSQL`, `Airflow`, `S3`|
 |[Оптимизация модели данных интернет-магазина](https://github.com/Artem-Merkulov/e_portfolio/tree/main/DE/Оптимизация%20модели%20данных%20интернет-магазина)| Проведена миграция данных из большой и неудобной таблицы в отдельные логические таблицы. На их основе собраны витрины данных. | `python`, `SQL`, `PostgreSQL` |
+|[DataVault2.0 с AutomateDV](https://github.com/Artem-Merkulov/e_portfolio/tree/main/DE/AutoDV)|Построен рабочий процесс с помощью DBT-пакета AutomateDV, который формирует ядро хранилища DataVault2.0 в СУБД PostgreSQL.|`DBT`, `Jinja2`, `AutomateDV`, `PostgreSQL`|
