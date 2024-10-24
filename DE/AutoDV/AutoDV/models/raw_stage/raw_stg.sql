@@ -34,4 +34,4 @@ LEFT JOIN
 	{{ source('automatedv', 'group_log') }} gl
 	ON u.user_id = gl.user_id
 WHERE 
-	d.message_ts::DATE = '{{ var('load_dt') }}'
+	d.message_ts::DATE = CAST('{{ var('load_dt') }}' AS DATE)

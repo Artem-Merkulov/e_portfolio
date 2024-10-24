@@ -3,7 +3,7 @@
 {% set yaml_metadata %}
 source_model: raw_stg
 derived_columns: 
-    load_src: '{{ var('load_src') }}'
+    load_src: CAST('{{ var('load_src') }}' AS TEXT)
     load_dt: CAST('{{ var('load_dt') }}' AS DATE)
     effective_from: message_ts
 hashed_columns:
