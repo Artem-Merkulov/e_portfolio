@@ -1,7 +1,10 @@
 # Инструкция по запуску проекта AutomateDV
 
 ```
-AutoDV
+├───AstronomerCosmos
+│   ├───.astro
+│   └───dags
+│       └───dbt
 ├───AutoDV
 │   ├───analyses
 │   ├───dbt_packages
@@ -74,4 +77,18 @@ AutoDV
 10. Создаём объекты workflow в СУБД и заполняем их данными за 2004-08-30: ```dbt run --vars '{load_dt: 2004-08-30, load_src: 1C}'```. Здесь ```2004-08-30``` - Дата первого отправленного сообщения в таблице фактов - ```dialog```. А ```1C``` - источник данных.
 11. Далее последовательно меняем дату в переменной ```load_dt``` для инкрементального заполнения элементов DataVault.
 
-![Lineage Graph](https://drive.google.com/uc?export=download&id=1FXNTcZRlILZPFCSvOE7dvRFynofA0Gft)
+![Lineage Graph](https://drive.google.com/uc?id=1FXNTcZRlILZPFCSvOE7dvRFynofA0Gft)
+
+## Добавление оркестрации Airflow от Astronomer-Cosmos:
+1. [Astronomer Cosmos](https://astronomer.github.io/astronomer-cosmos/index.html)
+2. Как создать оркестрацию с помощью Cosmos можно посмотреть по [ссылке](https://youtu.be/MhCuxTDlVkE?si=-3987OHfako26Xtq).
+3. Файлы, относящиеся к `Cosmos` располагаются в директории `AstronomerCosmos`. DBT-проект, который мы хотим оркестрировать, должен быть расположен в директории `dbt`:
+```
+└───AstronomerCosmos
+    ├───.astro
+    └───dags
+        └───dbt
+            └───AutoDV
+```
+В Airflow workflow будет выглядеть следующим образом:
+![Workflow](https://drive.google.com/uc?id=1XqOPXAddEdwCDsKrQhOAYj4gxJNmLhZq)
