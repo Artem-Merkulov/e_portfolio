@@ -1,6 +1,7 @@
 # Инструкция по запуску проекта AutomateDV
 
 ```
+AutoDV
 ├───AstronomerCosmos
 │   ├───.astro
 │   └───dags
@@ -88,7 +89,7 @@
     ├───.astro
     └───dags
         └───dbt
-            └───AutoDV
+            └───AutoDV -- Добавили сюда AutoDV
 ```
 В Airflow workflow будет выглядеть следующим образом:
 ![Workflow](https://drive.google.com/uc?id=1XqOPXAddEdwCDsKrQhOAYj4gxJNmLhZq)
