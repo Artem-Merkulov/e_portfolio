@@ -1,11 +1,24 @@
-version: 2
-
 sources:
   - name: automatedv
     database: postgres
     schema: auto_dv
     tables:
       - name: user
+        description: "Source user table"
+        columns: 
+          - name: user_id
+            data_tests: 
+              - not_null:
+                  tags: ['user_id_unique_test']
+                  config:
+                    store_failures_as: table
+                  where: "registration_dt < current_date"
+              - unique:
+                  config:
+                    severity: error
+                    error_if: ">10"
+                    warn_if: ">0"
+                    store_failures: true
       - name: dialog
       - name: group
       - name: group_log

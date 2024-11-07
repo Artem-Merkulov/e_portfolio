@@ -1,0 +1,145 @@
+version: 2
+
+models:
+  - name: raw_stg
+    description: "Raw stg"
+    columns: 
+      - name: id
+      - name: chat_name
+      - name: registration_dt
+      - name: age
+      - name: message_id
+        data_tests: 
+          - not_null:
+              tags: ['message_id_unique_test']
+              config:
+                store_failures_as: view
+          - unique:
+              config:
+                severity: error
+                error_if: ">10"
+                warn_if: ">0"
+                store_failures: true
+      - name: country
+        data_tests: 
+          - accepted_values:
+              values: 
+                - Burkina Faso
+                - Bangladesh
+                - Faroe Islands
+                - Indonesia
+                - El Salvador
+                - Italy
+                - Cameroon
+                - Czech Republic
+                - Fiji
+                - Jordan
+                - Dominican Republic
+                - Cambodia
+                - Germany
+                - Ireland
+                - Brunei
+                - Finland
+                - Anguilla
+                - Colombia
+                - Barbados
+                - Albania
+                - Cayman Islands
+                - Grenada
+                - Bermuda
+                - Argentina
+                - Cook Islands
+                - Cuba
+                - Cote D Ivoire
+                - Azerbaijan
+                - Greece
+                - Egypt
+                - Bahamas
+                - Afghanistan
+                - India
+                - Chad
+                - Iran
+                - Chile
+                - French Polynesia
+                - Algeria
+                - France
+                - Gambia
+                - Estonia
+                - Cape Verde
+                - Djibouti
+                - Cruise Ship
+                - Israel
+                - Barbuda
+                - Isle of Man
+                - Ghana
+                - Iceland
+                - Hong Kong
+                - Japan
+                - Denmark
+                - Jamaica
+                - Benin
+                - Guinea
+                - Cyprus
+                - Iraq
+                - Guinea Bissau
+                - Ecuador
+                - Guam
+                - Hungary
+                - Herzegovina
+                - China
+                - Honduras
+                - Belize
+                - Belarus
+                - Armenia
+                - Botswana
+                - Gabon
+                - Brazil
+                - Austria
+                - Australia
+                - Dominica
+                - Guatemala
+                - Bolivia
+                - Ethiopia
+                - Angola
+                - British Virgin Islands
+                - Antigua
+                - Bahrain
+                - French West Indies
+                - Bosnia
+                - Bulgaria
+                - Croatia
+                - Falkland Islands
+                - Aruba
+                - Congo
+                - Georgia
+                - Belgium
+                - Guernsey
+                - Burundi
+                - Guyana
+                - Greenland
+                - Costa Rica
+                - Bhutan
+                - Jersey
+                - Haiti
+                - Gibraltar
+                - Equatorial Guinea
+                - Andorra
+      - name: event
+        data_tests: 
+          - accepted_values:
+              values: 
+                - add
+                - create
+                - leave
+      - name: is_private
+        data_tests: 
+          - accepted_values:
+              values:
+                - 1
+                - 0
+          - unique:
+              config:
+                severity: error
+                error_if: ">10"
+                warn_if: ">0"
+                store_failures: true

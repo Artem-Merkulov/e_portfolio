@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: v_stg_user
+    description: "Stg user"
+    columns:
+      - name: id
+      - name: chat_name
+      - name: registration_dt
+      - name: country
+      - name: age
