@@ -1,32 +1,23 @@
-# Инструкция по запуску проекта AutomateDV
+# Инструкция по запуску проекта Cosmos-AutomateDV
 
 ```
-AutoDV
-├───AstronomerCosmos
-│   ├───.astro
-│   └───dags
-│       └───dbt
-├───AutoDV
-│   ├───analyses
-│   ├───dbt_packages
-│   │   ├───automate_dv
-│   │   └───dbt_utils
-│   ├───logs
-│   ├───macros
-│   ├───models
-│   │   ├───raw_stage
-│   │   ├───raw_vault
-│   │   │   ├───hubs
-│   │   │   ├───links
-│   │   │   └───sats
-│   │   └───stage
-│   ├───seeds
-│   ├───snapshots
-│   ├───target
-│   └───tests
-├───loaders
-├───requirements
-└───sources
+Cosmos-AutomateDV
+├───.astro
+└───dags
+    ├───csv
+    ├───dbt
+    │   └───AutoDV
+    │       ├───dbt_packages
+    │       ├───logs
+    │       ├───models
+    │       │   ├───raw_stage
+    │       │   ├───raw_vault
+    │       │   │   ├───hubs
+    │       │   │   ├───links
+    │       │   │   └───sats
+    │       │   └───stage
+    │       └───target
+    └───sql
 ```
 
 ## Для развертывания проекта необходимо:
@@ -37,7 +28,14 @@ AutoDV
 5. Проект реализован на СУБД PostgreSQL, установленной локально.
 6. [Видео](https://youtu.be/1fY1A8SRflI?si=j_RLf5bczqdu0SyR) для инициализации DBT-проекта.
 
-## Создание DBT проекта:
+## Порядок запуска проекта Cosmos-AutomateDV:
+1. Установить зависимости для Astronomer-Cosmos и DBT - `pip-freeze` через `requirements.txt`.
+2. Добавить csv-файлы в директорию `Cosmos-AutomateDV\dags\csv`.
+3. Запустить в Airflow `autodv-init`.
+4. Запустить в Airflow `autodv-dag`.
+
+## Создание DBT-проекта:
+###### Информация для справки.
 1. Создать директорию (Например AutoDV), в которой будет развёрнут проект и перейти в неё. 
    Открываю дирейторию в VSCode для удобства.
 2. Создать виртуальную среду python: ```python -m venv dbt_venv```
@@ -59,12 +57,8 @@ AutoDV
     В директории .dbt создался файл profile.yml с параметрами подключения к СУБД.
 18. Проверить работоспособность DBT-проекта: ```dbt debug```
 
-## Создание источников в базе данных:
-1. Создать таблицы в схеме auto_dv. DDL таблиц в файле ```AutoDV\sources\sources_ddl.txt``` (Шаг 1).
-2. Загрузить данные в базу из json и csv файлов, которые нужно взять у автора проекта. Должно получиться 4 таблицы источника в схеме auto_dv: ```group, user, dialog, group_log```. Python загрузчики для JSON файлов лежат в ```AutoDV\loaders\json_postgres_loader.ipynb```. JSON-файлы использую из-за того, что в них не нарушается кодировка кириллицы. Для загрузки csv-файлов лучше использовать psql. Код psql в файле ```AutoDV\loaders\psql_copy.txt```.
-3. Создать связи между таблицами-источниками в СУБД. Код создания внешних ключей в файле ```AutoDV\sources\sources_ddl.txt``` (Шаг 2).
-
 ## Добавление проекта AutomateDV в созданный DBT проект:
+###### Информация для справки.
    Как работать с пакетом AutomateDV можно посмотреть по [ссылке](https://www.youtube.com/@AutomateDV). 
 1. Скопировать файл packajes.yml, который находится по пути ```\AutoDV\AutoDV\packajes.yml``` в директорию проекта на один уровень с файлом ```dbt_project.yml```.
 2. В терминале VSCode выполнить команду (на уровне ```dbt_project.yml```): ```dbt deps```
@@ -81,15 +75,25 @@ AutoDV
 ![Lineage Graph](https://drive.google.com/uc?id=1FXNTcZRlILZPFCSvOE7dvRFynofA0Gft)
 
 ## Добавление оркестрации Airflow от Astronomer-Cosmos:
+###### Информация для справки.
 1. [Astronomer Cosmos](https://astronomer.github.io/astronomer-cosmos/index.html)
 2. Как создать оркестрацию с помощью Cosmos можно посмотреть по [ссылке](https://youtu.be/MhCuxTDlVkE?si=-3987OHfako26Xtq).
-3. Файлы, относящиеся к `Cosmos` располагаются в директории `AstronomerCosmos`. DBT-проект, который мы хотим оркестрировать, должен быть расположен в директории `dbt`:
+3. Файлы, относящиеся к `Cosmos` располагаются в директории `.astro`. DBT-проект, который мы хотим оркестрировать, должен быть расположен в директории `dbt`:
 ```
-└───AstronomerCosmos
-    ├───.astro
-    └───dags
-        └───dbt
-            └───AutoDV -- Добавили сюда AutoDV
+Cosmos-AutomateDV
+├───.astro
+└───dags
+    ├───csv
+    └───dbt
+        └───AutoDV <- Добавили сюда AutoDV.
 ```
-В Airflow workflow будет выглядеть следующим образом:
+
+## Создание источников в базе данных:
+1. Переместить csv-файлы в директорию `.\Cosmos-AutomateDV\dags\csv`.
+2. В Airflow запустить `autodv-init`.
+
+## В Airflow workflow будет выглядеть следующим образом:
+#### autodv-init
+![Init](https://drive.google.com/uc?export=download&id=1V_4u1WfZUJcRWz-3E11aOCZRCz4Da_68)
+#### autodv-dag
 ![Workflow](https://drive.google.com/uc?id=1XqOPXAddEdwCDsKrQhOAYj4gxJNmLhZq)

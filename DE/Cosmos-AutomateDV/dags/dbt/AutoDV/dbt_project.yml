@@ -6,7 +6,7 @@ name: 'AutoDV'
 version: '1.0.0'
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'AutoDV'
+profile: 'postgres_local'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -25,9 +25,20 @@ clean-targets:         # directories to be removed by `dbt clean`
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
-# In this example config, we tell dbt to build all models in the example/
-# directory as views. These settings can be overridden in the individual model
-# files using the `{{ config(...) }}` macro.
 models:
   AutoDV:
+    raw_stage:
+      +materialized: view
+      postgres_warehouse: postgres
+    stage:
+      +materialized: view
+      postgres_warehouse: postgres
+    raw_vault:
+      +materialized: table
+      postgres_warehouse: postgres
     # Config indicated by + and applies to all files under models/example/
+
+quoting:
+    database: false
+    schema: false
+    identifier: false

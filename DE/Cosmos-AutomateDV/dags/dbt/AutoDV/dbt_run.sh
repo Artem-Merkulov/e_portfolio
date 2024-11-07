@@ -1,0 +1,1 @@
+dbt run --vars '{load_dt: 2004-08-30, load_src: 1C}'

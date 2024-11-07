@@ -31,4 +31,5 @@ my_cosmos_dag = DbtDag(
     },
     max_active_runs=1,
     render_config=RenderConfig(emit_datasets=False),
+    tags=["autodv", "postgres", "run"]
 )

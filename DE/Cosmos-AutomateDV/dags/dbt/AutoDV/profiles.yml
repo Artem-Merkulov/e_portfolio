@@ -1,0 +1,12 @@
+postgres_local:
+  outputs:
+    dev:
+      dbname: postgres
+      host: localhost
+      pass: *************
+      port: 5433
+      schema: auto_dv
+      threads: 4
+      type: postgres
+      user: postgres
+  target: dev
