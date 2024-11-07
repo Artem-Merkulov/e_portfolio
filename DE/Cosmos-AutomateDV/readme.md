@@ -16,7 +16,8 @@ Cosmos-AutomateDV
     │       │   │   ├───links
     │       │   │   └───sats
     │       │   └───stage
-    │       └───target
+    │       ├───target
+    │       └───tests
     └───sql
 ```
 
