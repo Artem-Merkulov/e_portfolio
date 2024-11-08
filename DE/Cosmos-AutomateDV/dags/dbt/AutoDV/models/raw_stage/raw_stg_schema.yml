@@ -4,10 +4,6 @@ models:
   - name: raw_stg
     description: "Raw stg"
     columns: 
-      - name: id
-      - name: chat_name
-      - name: registration_dt
-      - name: age
       - name: message_id
         data_tests: 
           - not_null:
@@ -20,6 +16,14 @@ models:
                 error_if: ">10"
                 warn_if: ">0"
                 store_failures: true
+      - name: message_ts
+      - name: message_from
+      - name: message_to
+      - name: message
+      - name: message_group
+      - name: user_id
+      - name: chat_name
+      - name: user_reg_dt
       - name: country
         data_tests: 
           - accepted_values:
@@ -124,13 +128,11 @@ models:
                 - Gibraltar
                 - Equatorial Guinea
                 - Andorra
-      - name: event
-        data_tests: 
-          - accepted_values:
-              values: 
-                - add
-                - create
-                - leave
+      - name: age
+      - name: group_id
+      - name: admin_id
+      - name: group_name
+      - name: group_reg_dt
       - name: is_private
         data_tests: 
           - accepted_values:
@@ -143,3 +145,14 @@ models:
                 error_if: ">10"
                 warn_if: ">0"
                 store_failures: true
+      - name: gl_group_id
+      - name: gl_user_id
+      - name: user_id_from
+      - name: event
+        data_tests: 
+          - accepted_values:
+              values: 
+                - add
+                - create
+                - leave
+      - name: gl_datetime

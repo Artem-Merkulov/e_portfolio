@@ -9,7 +9,7 @@ sources:
           - name: user_id
             data_tests: 
               - not_null:
-                  tags: ['user_id_unique_test']
+                  tags: ['user_id_not_null_test']
                   config:
                     store_failures_as: table
                   where: "registration_dt < current_date"
@@ -19,6 +19,47 @@ sources:
                     error_if: ">10"
                     warn_if: ">0"
                     store_failures: true
+          - name: chat_name
+          - name: registration_dt
+          - name: country
+          - name: age
       - name: dialog
+        description: "Source user dialog"
+        columns:
+          - name: message_id
+          - name: message_ts
+          - name: message_from
+            data_tests: 
+              - not_null:
+                  tags: ['message_from_not_null_test']
+                  config:
+                    store_failures_as: table
+          - name: message_to
+            data_tests: 
+              - not_null:
+                  tags: ['message_to_not_null_test']
+                  config:
+                    store_failures_as: table
+          - name: message
+          - name: message_group
       - name: group
+        description: "Source user group"
+        columns:
+          - name: group_id
+          - name: admin_id
+            data_tests: 
+              - not_null:
+                  tags: ['admin_id_not_null_test']
+                  config:
+                    store_failures_as: table
+          - name: group_name
+          - name: registration_dt
+          - name: is_private
       - name: group_log
+        description: "Source user group_log"
+        columns:
+          - name: group_id
+          - name: user_id
+          - name: user_id_from
+          - name: event
+          - name: datetime
