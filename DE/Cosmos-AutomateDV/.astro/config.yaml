@@ -1,6 +1,0 @@
-postgres:
-    port: "5435"
-project:
-    name: cosmos-auto-dv
-webserver:
-    port: "8081"
